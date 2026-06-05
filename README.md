@@ -148,6 +148,7 @@ Web3.py	Tương tác Blockchain
 SHA-256	Kiểm tra toàn vẹn dữ liệu
 HTML/CSS/JS	Giao diện Web
 # 📂 8. Cấu trúc dự án
+```bash
 project/
 │
 ├── templates/
@@ -156,34 +157,42 @@ project/
 ├── captured_images/
 ├── blockchain.py
 ├── deploy_contract.py
-├── DrowsinessDetection.sol
 ├── testAmThanh.py
+├── DrowsinessDetection.sol
 ├── requirements.txt
 ├── .env
 └── README.md
+```
 # 🚀 9. Hướng dẫn cài đặt
-Bước 1. Tạo môi trường ảo
+## .1. Tạo môi trường ảo
+
+```bash
 python -m venv .venv
-Bước 2. Kích hoạt môi trường
+```
+
+## 9.2. Kích hoạt môi trường
+
+Windows PowerShell
+
+```bash
 .venv\Scripts\Activate.ps1
-Bước 3. Cài đặt thư viện
+```
+
+## 9.3. Cài đặt thư viện
+
+```bash
 pip install -r requirements.txt
-Bước 4. Cấu hình Blockchain
+```
+
+## 9.4. Cấu hình file .env
+
+```env
 INFURA_URL=your_infura_url
 CONTRACT_ADDRESS=your_contract_address
-Bước 5. Chạy hệ thống
-python testAmThanh.py
-Bước 6. Truy cập giao diện
-http://127.0.0.1:5000
-# ⛓️ 10. Triển khai Smart Contract
-Mở Remix IDE.
-Compile file DrowsinessDetection.sol.
-Chọn Injected Provider - MetaMask.
-Kết nối mạng Sepolia Testnet.
-Deploy Smart Contract.
-Sao chép Contract Address.
-Cập nhật vào file .env.
-# 📷 11. Hình ảnh hệ thống
+```
+
+
+# 📷 . Hình ảnh hệ thống
 ### Hình 1. Giao diện đăng nhập
 
 <p align="center">
@@ -213,28 +222,28 @@ Cập nhật vào file .env.
 </p>
 
 # 📊 12. Kết quả đạt được
-Phát hiện trạng thái buồn ngủ theo thời gian thực.
-Giám sát người lái xe liên tục.
-Cảnh báo bằng âm thanh.
-Lưu ảnh bằng chứng.
-Tạo mã băm SHA-256.
-Kết nối thành công MetaMask.
-Lưu dữ liệu lên Ethereum Sepolia.
-Đảm bảo tính toàn vẹn dữ liệu.
-Phù hợp với định hướng Smart City và Smart Transportation.
+* Phát hiện trạng thái buồn ngủ theo thời gian thực.
+* Giám sát người lái xe liên tục.
+* Cảnh báo bằng âm thanh.
+* Lưu ảnh bằng chứng.
+* Tạo mã băm SHA-256.
+* Kết nối thành công MetaMask.
+* Lưu dữ liệu lên Ethereum Sepolia.
+* Đảm bảo tính toàn vẹn dữ liệu.
+* Phù hợp với định hướng Smart City và Smart Transportation.
 # 🔮 13. Hướng phát triển
-Triển khai trên Raspberry Pi hoặc Jetson Nano.
-Tích hợp GPS theo dõi vị trí phương tiện.
-Kết nối hệ thống điều hành giao thông thông minh.
-Xây dựng ứng dụng di động.
-Tích hợp camera hồng ngoại hoạt động ban đêm.
-Ứng dụng trên xe khách, xe tải và phương tiện công cộng.
+* Triển khai trên Raspberry Pi hoặc Jetson Nano.
+* Tích hợp GPS theo dõi vị trí phương tiện.
+* Kết nối hệ thống điều hành giao thông thông minh.
+* Xây dựng ứng dụng di động.
+* Tích hợp camera hồng ngoại hoạt động ban đêm.
+* Ứng dụng trên xe khách, xe tải và phương tiện công cộng.
 # 👨‍🎓 14. Thông tin sinh viên
-Họ và tên: Lê Hải Đăng
-Lớp: CNTT 16-04
-MSSV: 1671020084
-Trường: Đại học Đại Nam
-Khoa: Công nghệ Thông tin
-Học phần: Thành phố thông minh và Nông nghiệp thông minh
+* Họ và tên: Lê Hải Đăng
+* Lớp: CNTT 16-04
+* MSSV: 1671020084
+* Trường: Đại học Đại Nam
+* Khoa: Công nghệ Thông tin
+* Học phần: Thành phố thông minh và Nông nghiệp thông minh
 
 ## © 2026 Faculty of Information Technology - Dai Nam University
