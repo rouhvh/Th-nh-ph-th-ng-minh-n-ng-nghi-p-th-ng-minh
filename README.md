@@ -365,7 +365,4 @@ http://127.0.0.1:5000
 
 ---
 
-## © 2026 Khoa Công nghệ Thông tin - Đại học Đại Nam
-
-
 ## © 2026 Faculty of Information Technology - Dai Nam University
