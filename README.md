@@ -20,97 +20,221 @@
 </div>
 
 
-# Smart Traffic Safety
+# 📖 1. Giới thiệu đề tài
+## 🚗 Hệ thống cảnh báo buồn ngủ khi lái xe trong Thành phố thông minh
 
-Hệ thống giám sát an toàn giao thông thông minh cho tài xế dựa trên camera, OpenCV, Flask và lớp ghi nhận sự kiện bằng blockchain nội bộ. Khi phát hiện mắt nhắm hoặc dấu hiệu buồn ngủ, hệ thống sẽ cảnh báo tức thì, chụp ảnh và lưu sự kiện để theo dõi sau này.
+Trong quá trình phát triển Thành phố thông minh (Smart City), việc đảm bảo an toàn giao thông đóng vai trò vô cùng quan trọng. Theo nhiều thống kê, tình trạng tài xế buồn ngủ hoặc mất tập trung là một trong những nguyên nhân hàng đầu gây ra tai nạn giao thông nghiêm trọng.
 
-## Tính năng chính
-- Phát hiện buồn ngủ theo khung hình camera thời gian thực.
-- Cảnh báo tức thì bằng âm thanh và hiển thị overlay trên video.
-- Lưu ảnh sự kiện vào `captured_images/`.
-- Ghi nhận sự kiện vào local blockchain để kiểm tra lịch sử.
-- Giao diện web để xem video trực tiếp và trạng thái hệ thống.
+Đề tài xây dựng hệ thống cảnh báo buồn ngủ khi lái xe sử dụng công nghệ Trí tuệ nhân tạo (AI), Internet vạn vật (IoT), Thị giác máy tính (Computer Vision) và Blockchain nhằm giám sát trạng thái người điều khiển phương tiện theo thời gian thực.
 
-## Cấu trúc chính
-- `importcv2.py`: ứng dụng Flask chính cho Smart Traffic Safety.
-- `motion_detection.py`: bộ khởi chạy tương thích, chuyển hướng sang ứng dụng chính.
-- `start_server.bat`: file chạy nhanh trên Windows.
-- `templates/index_flask_server.html`: giao diện dashboard.
-- `train_latest_drowsiness_model.py`: script huấn luyện transfer learning cho model mới.
-- `blockchain.py`: lưu sự kiện drowsiness vào chuỗi khối nội bộ.
-- `user_identity.py`: quản lý người dùng và phiên đăng nhập.
+Hệ thống sử dụng camera để theo dõi khuôn mặt tài xế, phân tích trạng thái mắt và mức độ tập trung. Khi phát hiện dấu hiệu buồn ngủ hoặc mất tập trung, hệ thống sẽ phát cảnh báo tức thời, đồng thời lưu trữ dữ liệu sự kiện lên Blockchain nhằm đảm bảo tính minh bạch và toàn vẹn dữ liệu.
 
-## Cài đặt
-```bash
+Đây là một giải pháp có khả năng ứng dụng trong giao thông thông minh, xe công nghệ, xe khách đường dài, xe tải vận chuyển hàng hóa và các phương tiện phục vụ đô thị thông minh.
+
+# 🎯 2. Mục tiêu đề tài
+Giám sát trạng thái người lái xe theo thời gian thực.
+Phát hiện dấu hiệu buồn ngủ và mất tập trung.
+Cảnh báo nguy cơ mất an toàn giao thông.
+Lưu trữ hình ảnh bằng chứng.
+Tạo mã băm SHA-256 đảm bảo tính toàn vẹn dữ liệu.
+Lưu trữ lịch sử cảnh báo trên Blockchain.
+Hỗ trợ xây dựng hệ thống giao thông thông minh trong Smart City.
+# 🏙️ 3. Ý nghĩa đối với Thành phố thông minh
+🚦 Smart Transportation
+Giảm thiểu tai nạn giao thông.
+Nâng cao an toàn cho người tham gia giao thông.
+Hỗ trợ quản lý phương tiện thông minh.
+📡 Smart IoT
+Thu thập dữ liệu từ camera thời gian thực.
+Truyền dữ liệu đến hệ thống giám sát.
+Hỗ trợ giám sát từ xa.
+🔒 Smart Data
+Quản lý dữ liệu an toàn.
+Đảm bảo tính toàn vẹn dữ liệu.
+Hỗ trợ truy xuất lịch sử cảnh báo.
+⛓️ Blockchain
+Chống chỉnh sửa dữ liệu.
+Lưu vết các sự kiện cảnh báo.
+Tăng tính minh bạch trong quản lý giao thông.
+# 🌱 4. Liên hệ với Nông nghiệp thông minh
+
+Ngoài ứng dụng trong giao thông thông minh, hệ thống còn có thể áp dụng trong lĩnh vực Nông nghiệp thông minh:
+
+Giám sát người vận hành máy cày.
+Giám sát người điều khiển máy gặt.
+Phát hiện trạng thái mệt mỏi của công nhân nông nghiệp.
+Giảm nguy cơ tai nạn lao động.
+Lưu lịch sử vận hành thiết bị nông nghiệp trên Blockchain.
+# 🏗️ 5. Kiến trúc hệ thống
+📷 Camera Monitoring Module
+
+Chức năng:
+
+Thu nhận hình ảnh khuôn mặt tài xế.
+Truyền dữ liệu video tới hệ thống AI.
+🤖 AI Processing Module
+
+Chức năng:
+
+Phát hiện khuôn mặt.
+Xác định vị trí mắt.
+Tính toán Eye Aspect Ratio (EAR).
+Phát hiện trạng thái buồn ngủ.
+Phát hiện mất tập trung.
+Kích hoạt cảnh báo.
+🔊 Alert Module
+
+Chức năng:
+
+Phát âm thanh cảnh báo.
+Hiển thị cảnh báo trên giao diện web.
+📸 Evidence Module
+
+Chức năng:
+
+Chụp ảnh bằng chứng.
+Lưu thời gian xảy ra sự kiện.
+Hỗ trợ truy xuất dữ liệu.
+⛓️ Blockchain Module
+
+Chức năng:
+
+Sinh mã SHA-256.
+Kết nối Ethereum Blockchain.
+Ghi dữ liệu lên Smart Contract.
+Kiểm tra tính toàn vẹn dữ liệu.
+🌐 Web Dashboard
+
+Chức năng:
+
+Hiển thị video thời gian thực.
+Hiển thị trạng thái tài xế.
+Kết nối MetaMask.
+Theo dõi lịch sử cảnh báo.
+Lưu dữ liệu Blockchain.
+# 🚀 6. Chức năng chính
+👁️ Theo dõi trạng thái người lái
+Nhận diện khuôn mặt.
+Theo dõi mắt.
+Tính toán chỉ số EAR.
+⚠️ Phát hiện buồn ngủ
+Phát hiện mắt nhắm liên tục.
+Đánh giá mức độ nguy hiểm.
+Kích hoạt cảnh báo.
+🚨 Cảnh báo thời gian thực
+Phát âm thanh.
+Hiển thị thông báo trên giao diện.
+📸 Lưu ảnh bằng chứng
+Chụp ảnh người lái.
+Lưu thời gian phát hiện.
+🔐 Tạo mã SHA-256
+Mã hóa dữ liệu sự kiện.
+Kiểm tra tính toàn vẹn dữ liệu.
+⛓️ Lưu dữ liệu Blockchain
+Kết nối MetaMask.
+Ký giao dịch.
+Ghi dữ liệu lên Smart Contract.
+# 🛠️ 7. Công nghệ sử dụng
+Công nghệ	Vai trò
+Python	Ngôn ngữ lập trình chính
+Flask	Web Server
+OpenCV	Xử lý ảnh
+MediaPipe	Nhận diện khuôn mặt
+TensorFlow/Keras	AI phát hiện buồn ngủ
+Ethereum Blockchain	Lưu trữ dữ liệu
+Solidity	Smart Contract
+MetaMask	Ký giao dịch
+Web3.py	Tương tác Blockchain
+SHA-256	Kiểm tra toàn vẹn dữ liệu
+HTML/CSS/JS	Giao diện Web
+# 📂 8. Cấu trúc dự án
+project/
+│
+├── templates/
+├── static/
+├── models/
+├── captured_images/
+├── blockchain.py
+├── deploy_contract.py
+├── DrowsinessDetection.sol
+├── testAmThanh.py
+├── requirements.txt
+├── .env
+└── README.md
+# 🚀 9. Hướng dẫn cài đặt
+Bước 1. Tạo môi trường ảo
+python -m venv .venv
+Bước 2. Kích hoạt môi trường
+.venv\Scripts\Activate.ps1
+Bước 3. Cài đặt thư viện
 pip install -r requirements.txt
-```
+Bước 4. Cấu hình Blockchain
+INFURA_URL=your_infura_url
+CONTRACT_ADDRESS=your_contract_address
+Bước 5. Chạy hệ thống
+python testAmThanh.py
+Bước 6. Truy cập giao diện
+http://127.0.0.1:5000
+# ⛓️ 10. Triển khai Smart Contract
+Mở Remix IDE.
+Compile file DrowsinessDetection.sol.
+Chọn Injected Provider - MetaMask.
+Kết nối mạng Sepolia Testnet.
+Deploy Smart Contract.
+Sao chép Contract Address.
+Cập nhật vào file .env.
+# 📷 11. Hình ảnh hệ thống
+### Hình 1. Giao diện đăng nhập
 
-Nếu bạn dùng các bản mở rộng như `thu5.py` hoặc `testAmThanh.py`, hãy cài thêm `tensorflow`, `gTTS`, `pygame`, `Pillow` và `playsound` theo nhu cầu.
+<p align="center">
 
-## 4.5 Kết nối MetaMask
-- Cài đặt MetaMask trên trình duyệt và chuyển sang mạng `Sepolia`.
-- Đảm bảo ví có đủ test ETH để ký và gửi giao dịch.
-- Mở giao diện web, bấm `Kết nối MetaMask` rồi xác nhận ví.
-- Ứng dụng sẽ dùng `CONTRACT_ADDRESS` từ máy chủ để tránh ghi đè sai ở trình duyệt.
+<img src="docs/.png" width="700">
+=======
+<img src="docs/e.png" width="700">
 
-## 4.6 Triển khai smart contract
-- Compile và deploy `DrowsinessDetection.sol` bằng Remix hoặc `deploy_contract.py`.
-- Sao chép địa chỉ contract vừa deploy vào biến môi trường `CONTRACT_ADDRESS` trong `.env`.
-- Khởi động lại ứng dụng sau khi cập nhật `.env` để frontend và backend dùng cùng một địa chỉ.
-- Nếu đổi contract mới, cần reload trang để MetaMask gọi đúng ABI và address.
+</p>
 
-## Huấn luyện model mới
-Khi có dataset, bạn có thể train model mới bằng script:
-```bash
-python train_latest_drowsiness_model.py --data-dir dataset --output models/drowsiness_latest.keras
-```
+### Hình 2. Mắt mở bình thường
 
-Dataset nên được tổ chức theo thư mục lớp, ví dụ:
-```text
-dataset/
-	open/
-	closed/
-	yawning/
-	distracted/
-```
+<p align="center">
+<img src="docs/f.png" width="700">
+</p>
 
-Nếu TensorFlow chưa được cài trong môi trường hiện tại, script sẽ báo rõ và dừng an toàn.
+### Hình 3. Mắt mở bất thường
 
-## Chạy hệ thống
-```bash
-python motion_detection.py
-```
+<p align="center">
+<img src="docs/a.png" width="700">
+</p>
 
-Mặc định, app dùng MediaPipe Face Mesh để phát hiện mắt nhắm. Nếu muốn đổi mode, đặt biến môi trường:
-```bash
-set DETECTION_MODE=mediapipe
-```
+### Hình 4. Phát hiện buồn ngủ & mất tập trung 
 
-Nếu muốn dùng YOLOv8, đặt `DETECTION_MODE=yolov8` và `YOLO_MODEL_PATH=models/drowsiness_yolov8.pt`.
+<p align="center">
+<img src="docs/k.png" width="700">
+</p>
 
-Nếu chưa có `mediapipe` hoặc `ultralytics`, ứng dụng sẽ tự quay về chế độ Haar cascade để vẫn chạy được.
+# 📊 12. Kết quả đạt được
+Phát hiện trạng thái buồn ngủ theo thời gian thực.
+Giám sát người lái xe liên tục.
+Cảnh báo bằng âm thanh.
+Lưu ảnh bằng chứng.
+Tạo mã băm SHA-256.
+Kết nối thành công MetaMask.
+Lưu dữ liệu lên Ethereum Sepolia.
+Đảm bảo tính toàn vẹn dữ liệu.
+Phù hợp với định hướng Smart City và Smart Transportation.
+# 🔮 13. Hướng phát triển
+Triển khai trên Raspberry Pi hoặc Jetson Nano.
+Tích hợp GPS theo dõi vị trí phương tiện.
+Kết nối hệ thống điều hành giao thông thông minh.
+Xây dựng ứng dụng di động.
+Tích hợp camera hồng ngoại hoạt động ban đêm.
+Ứng dụng trên xe khách, xe tải và phương tiện công cộng.
+# 👨‍🎓 14. Thông tin sinh viên
+Họ và tên: Lê Hải Đăng
+Lớp: CNTT 16-04
+MSSV: 1671020084
+Trường: Đại học Đại Nam
+Khoa: Công nghệ Thông tin
+Học phần: Thành phố thông minh và Nông nghiệp thông minh
 
-Hoặc trên Windows:
-```bat
-start_server.bat
-```
-
-Bạn có thể truyền camera URL qua biến môi trường `CAMERA_URL` hoặc tham số đầu tiên của `start_server.bat`.
-
-## Luồng hoạt động
-1. Nhận khung hình từ camera hoặc điện thoại qua `CAMERA_URL`.
-2. Phát hiện khuôn mặt, mắt và tư thế đầu.
-3. Nếu dấu hiệu buồn ngủ kéo dài vượt ngưỡng, hệ thống chụp ảnh và phát cảnh báo.
-4. Sự kiện được xếp hàng chờ MetaMask ký giao dịch, sau đó được ghi lên smart contract và hiển thị trên dashboard.
-
-## 5.5 Gửi cảnh báo qua MetaMask
-- Backend đẩy sự kiện buồn ngủ vào hàng đợi `/api/metamask/next-alert`.
-- Frontend lấy từng cảnh báo, tạo giao dịch `addDrowsinessEvent(...)` và yêu cầu MetaMask ký.
-- Khi giao dịch được xác nhận, frontend gọi `/api/metamask/ack-alert` để đánh dấu đã xử lý.
-- Toàn bộ địa chỉ contract lấy từ server, không phụ thuộc `localStorage` của trình duyệt.
-
-## Ghi chú
-- Các script như `thu5.py`, `test8.py`, `testAmThanh.py` là biến thể thử nghiệm hoặc mở rộng.
-- Nếu muốn xem tích hợp MetaMask/Smart Contract, đọc thêm `README_MetaMask.md`.
-
-© 2025 NHÓM 2, CNTT16-04, TRƯỜNG ĐẠI HỌC ĐẠI NAM
+## © 2026 Faculty of Information Technology - Dai Nam University
